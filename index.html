@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,28 +33,33 @@
 </head>
 <body>
     <header>
-        <h1>Petrified Giant Tree Stumps</h1>
+        <h1>Petrified Giant Tree Stumps Locations</h1>
     </header>
     <div class="content">
-        <p>You can send more locations of petrified giant tree stumps to my email: <a href="mailto:kehomieli@proton.me">kehomieli@proton.me</a>.</p>
+        <p>You can send more locations of petrified giant tree stumps to my email: 
+           <a href="mailto:kehomieli@proton.me">kehomieli@proton.me</a>.
+        </p>
     </div>
     <div id="map"></div>
 
+    <!-- Load Leaflet and OpenStreetMap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+
     <script>
-        function initMap() {
-            var location = {lat: 44.593, lng: -104.713}; // Devil's Tower coordinates
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 10,
-                center: location
-            });
-            var marker = new google.maps.Marker({
-                position: location,
-                map: map,
-                title: 'Devil\'s Tower'
-            });
-        }
+        // Initialize the map, center it on Devil's Tower coordinates
+        var map = L.map('map').setView([44.593, -104.713], 10);  // Devil's Tower location
+
+        // Set up the OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Add a marker at Devil's Tower location
+        L.marker([44.593, -104.713])
+            .addTo(map)
+            .bindPopup("<b>Devil's Tower</b><br>Famous petrified tree stump location.")
+            .openPopup();
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" 
-    async defer></script>
 </body>
 </html>
