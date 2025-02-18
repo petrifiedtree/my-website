@@ -3,63 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Petrified Giant Tree Stumps</title>
+    <title>Petrified Giant Tree Stumps Locations</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-        header h1 {
-            margin: 0;
-        }
-        .content {
-            padding: 20px;
-            text-align: center;
-        }
-        #map {
-            width: 100%;
-            height: 500px;
-            margin-top: 20px;
-        }
+        body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+        #map { height: 500px; width: 100%; margin-top: 20px; }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Petrified Giant Tree Stumps Locations</h1>
-    </header>
-    <div class="content">
-        <p>You can send more locations of petrified giant tree stumps to my email: 
-           <a href="mailto:kehomieli@proton.me">kehomieli@proton.me</a>.
-        </p>
-    </div>
+    <h1>Petrified Giant Tree Stumps Locations</h1>
+    <p>The information is partly based on old maps that show remains of fallen giant tree stumps.</p>
+    <p>You can send more locations of petrified giant tree stumps to my email: <b>kehomieli@proton.me</b></p>
     <div id="map"></div>
-
-    <!-- Load Leaflet and OpenStreetMap -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
-
+    
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        // Initialize the map, center it on Devil's Tower coordinates
-        var map = L.map('map').setView([44.593, -104.713], 10);  // Devil's Tower location
-
-        // Set up the OpenStreetMap tiles
+        var map = L.map('map').setView([20, 0], 2);
+        
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            attribution: '&copy; OpenStreetMap contributors'
         }).addTo(map);
-
-        // Add a marker at Devil's Tower location
-        L.marker([44.593, -104.713])
-            .addTo(map)
-            .bindPopup("<b>Devil's Tower</b><br>Famous petrified tree stump location.")
-            .openPopup();
+        
+        var locations = [
+            [44.590, -104.714, "Devils Tower, USA"],
+            [19.759, -99.373, "La Mesa Redonda, Mexico"],
+            [67.798, -65.307, "Mount Asgard, Canada"],
+            [14.345, 44.453, "Harras of Dhamar, Yemen"],
+            [56.448, -5.440, "Basalt Columns, Scotland"],
+            [-43.244, 147.965, "Tasman Island, Australia"],
+            [0.103, 6.573, "Cão Grande Peak, São Tomé and Príncipe"],
+            [5.333, -62.597, "Tepuy, Venezuela"],
+            [35.863, 8.588, "Jugurtha Tableland, Tunisia"],
+            [36.955, -110.079, "Three Sisters, Monument Valley, USA"],
+            [13.285, 38.091, "Simien Mountains, Ethiopia"],
+            [6.825, 39.729, "Bale Mountains, Ethiopia"],
+            [-19.200, 47.200, "Ankaratra, Madagascar"],
+            [61.500, 60.000, "Ural Mountains, Russia"]
+        ];
+        
+        locations.forEach(function(loc) {
+            L.marker([loc[0], loc[1]]).addTo(map)
+                .bindPopup(loc[2]);
+        });
     </script>
 </body>
 </html>
