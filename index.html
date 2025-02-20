@@ -19,57 +19,65 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
         var map = L.map('map').setView([20, 0], 2);
-        
+
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; OpenStreetMap contributors'
         }).addTo(map);
-        
+
+        // Lista lokaatiosta ja niiden kuvista
         var locations = [
-            [44.590, -104.714, "Devils Tower, USA"],
-            [19.759, -99.373, "La Mesa Redonda, Mexico"],
-            [67.798, -65.307, "Mount Asgard, Canada"],
-            [14.345, 44.453, "Harras of Dhamar, Yemen"],
-            [56.448, -5.440, "Basalt Columns, Scotland"],
-            [-43.244, 147.965, "Tasman Island, Australia"],
-            [0.103, 6.573, "Cão Grande Peak, São Tomé and Príncipe"],
-            [5.333, -62.597, "Tepuy, Venezuela"],
-            [35.863, 8.588, "Jugurtha Tableland, Tunisia"],
-            [36.955, -110.079, "Three Sisters, Monument Valley, USA"],
-            [13.285, 38.091, "Simien Mountains, Ethiopia"],
-            [6.825, 39.729, "Bale Mountains, Ethiopia"],
-            [-19.200, 47.200, "Ankaratra, Madagascar"],
-            [67.150, -52.866, "Uummannaq Qeqertaa, Greenland"],
-            [67.025, 27.170, "Pyhätunturi, Finland"],
-            [3.238, 101.684, "Batu Caves, Malaysia"],
-            [43.236, -122.433, "Toketee Falls, USA"],
-            [-26.930, 152.912, "Mount Ngugun, Australia"],
-            [24.827, 102.761, "Stone Forest Scenic, Yunnan, China"],
-            [-38.658, -70.883, "Pino Hachado, Argentina"],
-            [-3.067, 37.355, "Kilimanjaro, Tanzania"],
-            [46.751, 60.895, "Mount Bokty, Kazakhstan"],
-            [5.227, -60.763, "Mount Roraima, Venezuela"],
-            [67.650, -65.883, "Akshayuk Pass, Canada"],
-            [43.624, 22.686, "Belogradchik Fortress, Bulgaria"],
-            [-24.901, 133.798, "Chambers Pillar, Australia"],
-            [-30.032, 150.154, "Sawn Rocks, Australia"],
-            [-37.694, 144.742, "Organ Pipes National Park, Australia"],
-            [37.865, -119.538, "Yosemite National Park, USA"],
-            [36.145, -108.202, "King of Wings, New Mexico, USA"],
-            [37.218, -113.229, "Kolob Canyons, Utah, USA"],
-            [7.328, 80.677, "Kehelpothdoruwegala, Sri Lanka"],
-            [54.044, -8.672, "Knocknashee, Ireland"],
-            [69.655, 31.356, "Cape Kekurskiy, Russia"],
-            [7.957, 80.760, "Sigiriya Lion Rock, Sri Lanka"],
-            [40.143, 44.568, "Symphony of Stones, Armenia"],
-            [37.093, 43.487, "Amedi العمادية, Iraq"],
-            [19.133, 72.833, "Gilbert Hill, India"],
-            [-35.650, 138.517, "Pulpit Rock, Australia"],
-            [43.408, 40.347, "The Veryovkina Caves, Georgia"]
+            [44.590, -104.714, "Devils Tower, USA", "images/devils_tower.png"],
+            [19.759, -99.373, "La Mesa Redonda, Mexico", "images/mesa_redonda.png"],
+            [67.798, -65.307, "Mount Asgard, Canada", "images/mount_asgard.png"],
+            [14.345, 44.453, "Harras of Dhamar, Yemen", "images/harras_dhamar.png"],
+            [56.448, -5.440, "Basalt Columns, Scotland", "images/basalt_scotland.png"],
+            [-43.244, 147.965, "Tasman Island, Australia", "images/tasman_island.png"],
+            [0.103, 6.573, "Cão Grande Peak, São Tomé and Príncipe", "images/cao_grande.png"],
+            [5.333, -62.597, "Tepuy, Venezuela", "images/tepuy_venezuela.png"],
+            [35.863, 8.588, "Jugurtha Tableland, Tunisia", "images/jugurtha_tableland.png"],
+            [36.955, -110.079, "Three Sisters, Monument Valley, USA", "images/three_sisters.png"],
+            [13.285, 38.091, "Simien Mountains, Ethiopia", "images/simien_mountains.png"],
+            [6.825, 39.729, "Bale Mountains, Ethiopia", "images/bale_mountains.png"],
+            [-19.200, 47.200, "Ankaratra, Madagascar", "images/ankaratra.png"],
+            [67.150, -52.866, "Uummannaq Qeqertaa, Greenland", "images/uummannaq.png"],
+            [67.025, 27.170, "Pyhätunturi, Finland", "images/pyhatunturi.png"],
+            [3.238, 101.684, "Batu Caves, Malaysia", "images/batu_caves.png"],
+            [43.236, -122.433, "Toketee Falls, USA", "images/toketee_falls.png"],
+            [-26.930, 152.912, "Mount Ngugun, Australia", "images/mount_ngugun.png"],
+            [24.827, 102.761, "Stone Forest Scenic, Yunnan, China", "images/stone_forest.png"],
+            [-38.658, -70.883, "Pino Hachado, Argentina", "images/pino_hachado.png"],
+            [-3.067, 37.355, "Kilimanjaro, Tanzania", "images/kilimanjaro.png"],
+            [46.751, 60.895, "Mount Bokty, Kazakhstan", "images/mount_bokty.png"],
+            [5.227, -60.763, "Mount Roraima, Venezuela", "images/mount_roraima.png"],
+            [67.650, -65.883, "Akshayuk Pass, Canada", "images/akshayuk_pass.png"],
+            [43.624, 22.686, "Belogradchik Fortress, Bulgaria", "images/belogradchik.png"],
+            [-24.901, 133.798, "Chambers Pillar, Australia", "images/chambers_pillar.png"],
+            [-30.032, 150.154, "Sawn Rocks, Australia", "images/sawn_rocks.png"],
+            [-37.694, 144.742, "Organ Pipes National Park, Australia", "images/organ_pipes.png"],
+            [37.865, -119.538, "Yosemite National Park, USA", "images/yosemite.png"],
+            [36.145, -108.202, "King of Wings, New Mexico, USA", "images/king_of_wings.png"],
+            [37.218, -113.229, "Kolob Canyons, Utah, USA", "images/kolob_canyons.png"],
+            [7.328, 80.677, "Kehelpothdoruwegala, Sri Lanka", "images/kehelpothdoruwegala.png"],
+            [54.044, -8.672, "Knocknashee, Ireland", "images/knocknashee.png"],
+            [69.655, 31.356, "Cape Kekurskiy, Russia", "images/cape_kekurskiy.png"],
+            [7.957, 80.760, "Sigiriya Lion Rock, Sri Lanka", "images/sigiriya.png"],
+            [40.143, 44.568, "Symphony of Stones, Armenia", "images/symphony_of_stones.png"],
+            [37.093, 43.487, "Amedi العمادية, Iraq", "images/amedi.png"],
+            [19.133, 72.833, "Gilbert Hill, India", "images/gilbert_hill.png"],
+            [-35.650, 138.517, "Pulpit Rock, Australia", "images/pulpit_rock.png"],
+            [43.408, 40.347, "The Veryovkina Caves, Georgia", "images/veryovkina_caves.png"]
         ];
-        
+
         locations.forEach(function(loc) {
-            L.marker([loc[0], loc[1]]).addTo(map)
-                .bindPopup(loc[2]);
+            var icon = L.icon({
+                iconUrl: loc[3] || "images/default.png", // Jos kuvaa ei löydy, käytä oletuskuvaa
+                iconSize: [50, 50],
+                iconAnchor: [25, 50],
+                popupAnchor: [0, -50]
+            });
+
+            L.marker([loc[0], loc[1]], {icon: icon}).addTo(map)
+                .bindPopup("<b>" + loc[2] + "</b>");
         });
     </script>
 </body>
