@@ -8,6 +8,7 @@
     <style>
         body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
         #map { height: 500px; width: 100%; margin-top: 20px; }
+        .popup-image { max-width: 400px; max-height: 300px; }
     </style>
 </head>
 <body>
@@ -63,7 +64,27 @@
             [37.093, 43.487, "Amedi العمادية, Iraq", "images/amedi.png"],
             [19.133, 72.833, "Gilbert Hill, India", "images/gilbert_hill.png"],
             [-35.650, 138.517, "Pulpit Rock, Australia", "images/pulpit_rock.png"],
-            [43.408, 40.347, "The Veryovkina Caves, Georgia", "images/veryovkina_caves.png"]
+            [43.408, 40.347, "The Veryovkina Caves, Georgia", "images/veryovkina_caves.png"],
+            // Uudet lisätyt kohteet
+            [15.410, 44.755, "Hardah Damt, Yemen", "images/hardah_damt.png"],
+            [51.490, -122.912, "Thors Peak, Canada", "images/thors_peak.png"],
+            [38.238, -111.538, "Cathedral Valley, Utah, USA", "images/cathedral_valley.png"],
+            [46.370, 12.149, "Cinque Torri, Italy", "images/cinque_torri.png"],
+            [56.120, -3.197, "Durbanton Rock, Scotland", "images/durbanton_rock.png"],
+            [39.481, 22.565, "Theopetra Cave, Greece", "images/theopetra_cave.png"],
+            [64.441, -19.000, "Litlanesfoss, Iceland", "images/litlanesfoss.png"],
+            [9.065, 7.336, "Zuma Rock, Nigeria", "images/zuma_rock.png"],
+            [-38.716, 142.716, "Twelve Apostles, Australia", "images/twelve_apostles.png"],
+            [58.421, -3.481, "Old Man of Hoy, Scotland", "images/old_man_of_hoy.png"],
+            [54.251, -9.634, "Dún Briste Sea Stack, Ireland", "images/dun_bristse.png"],
+            [71.710, -56.400, "Ulamertorsuaq, Greenland", "images/ulamertorsuaq.png"],
+            [90.000, 0.000, "North Pole", "images/north_pole.png"],
+            [36.998, -110.099, "Monument Valley, USA", "images/monument_valley.png"],
+            [20.160, 18.233, "Tibesti Mountains, Chad", "images/tibesti_mountains.png"],
+            [44.100, 1.697, "Cave of Harpea, France", "images/cave_of_harpea.png"],
+            [65.200, -16.540, "Stuðlagil Canyon, Iceland", "images/studlagil_canyon.png"],
+            [41.473, -106.464, "Square Top Mountain, Wyoming, USA", "images/square_top_mountain.png"],
+            [55.250, -6.512, "Giants Causeway, Northern Ireland", "images/giants_causeway.png"]
         ];
 
         locations.forEach(function(loc) {
@@ -75,8 +96,15 @@
             });
 
             L.marker([loc[0], loc[1]], {icon: icon}).addTo(map)
-                .bindPopup("<b>" + loc[2] + "</b>");
+                .bindPopup("<b>" + loc[2] + "</b><br><img src='" + loc[3] + "' class='popup-image' onclick='openImage(\"" + loc[3] + "\")'>");
         });
+
+        function openImage(imageUrl) {
+            var popup = L.popup()
+                .setLatLng(map.getCenter())
+                .setContent('<img src="' + imageUrl + '" class="popup-image" style="width: 100%;">')
+                .openOn(map);
+        }
     </script>
 </body>
 </html>
