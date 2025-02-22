@@ -163,6 +163,15 @@ In its thoughtlessness, humanity closed itself off and lost connection with both
                 .bindPopup("<b>" + loc[2] + "</b><br><img src='" + loc[3] + "' class='popup-image' onclick='openImage(\"" + loc[3] + "\")'>");
         });
 
+var vedrusIcon = L.divIcon({
+            className: 'vedrus-text',
+            html: '<div style="color: red; font-size: 18px; font-weight: bold;">The Vedrus</div>',
+            iconSize: [100, 50],
+            iconAnchor: [50, 50]
+        });
+
+        L.marker([69.655, 31.356], { icon: vedrusIcon }).addTo(map);
+        
         function openImage(imageUrl) {
             var popup = L.popup()
                 .setLatLng(map.getCenter())
