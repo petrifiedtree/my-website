@@ -75,6 +75,27 @@ In its thoughtlessness, humanity closed itself off and lost connection with both
             attribution: '&copy; OpenStreetMap contributors'
         }).addTo(map);
 
+	var atlantisCoords = [
+            [37.657833, -24.053333],  // 37°39'28.2"N 24°03'12.0"W
+            [39.205167, -26.793583],  // 39°12'18.6"N 26°47'38.3"W
+            [40.299472, -26.401972],  // 40°17'58.1"N 26°24'07.3"W
+            [43.412972, -27.714806],  // 43°24'46.9"N 27°42'53.3"W
+            [46.766222, -26.198694],  // 46°45'58.4"N 26°11'55.3"W
+            [57.831861, -32.508556],  // 57°49'54.7"N 32°30'30.8"W
+            [57.817417, -33.984833],  // 57°49'06.7"N 33°59'03.4"W
+            [53.371556, -37.297583],  // 53°22'17.6"N 37°17'51.3"W
+            [50.076056, -32.461361],  // 50°04'35.7"N 32°27'40.9"W
+            [46.107083, -30.120833],  // 46°06'25.3"N 30°07'15.1"W
+            [40.687056, -32.534138],  // 40°41'17.4"N 32°32'02.9"W
+            [33.722000, -38.663167],  // 33°43'21.2"N 38°39'47.5"W
+            [30.406222, -42.983667],  // 30°24'18.8"N 42°59'01.2"W
+            [26.955500, -44.611944],  // 26°57'19.8"N 44°36'43.0"W
+            [30.196500, -41.975222],  // 30°11'47.6"N 41°58'30.8"W
+            [33.576222, -37.212917],  // 33°34'34.4"N 37°12'46.8"W
+            [37.158611, -30.884861],  // 37°09'31.0"N 30°53'05.5"W
+            [36.737167, -25.523528]   // 36°44'13.8"N 25°31'24.7"W
+        ];
+
         // Lista lokaatiosta ja niiden kuvista
         var locations = [
             [46.437, 11.848, "Dolomites, Italy", "images/dolomites.png"],
@@ -186,6 +207,16 @@ In its thoughtlessness, humanity closed itself off and lost connection with both
             L.marker([loc[0], loc[1]], {icon: icon}).addTo(map)
                 .bindPopup("<b>" + loc[2] + "</b><br><img src='" + loc[3] + "' class='popup-image' onclick='openImage(\"" + loc[3] + "\")'>");
         });
+
+	var atlantisArea = L.polygon(atlantisCoords, {
+            color: 'green', 
+            weight: 2, 
+            fillColor: 'green', 
+            fillOpacity: 0.7, 
+            opacity: 0.9 
+        }).addTo(map);
+
+        atlantisArea.bindPopup("<b>Atlantis without its islands</b>");
 
 var vedrusIcon = L.divIcon({
             className: 'vedrus-text',
