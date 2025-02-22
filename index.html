@@ -182,6 +182,65 @@ var vedrusIcon = L.divIcon({
                 .setContent('<img src="' + imageUrl + '" class="popup-image" style="width: 100%;">')
                 .openOn(map);
         }
+
+        function setLanguage(language) {
+    const translations = {
+        en: {
+            title: "Petrified Giant Tree Stumps Locations",
+            emailInfo: "You can send more locations of petrified giant tree stumps to my email: <b>kehomieli@proton.me</b>",
+            mapPurposeTitle: "Purpose of the Map",
+            mapPurposeText: "The purpose of the map is to clarify the image of the world before the Great Flood, as referenced in various mythologies. The map shows where the giant trees once stood and hopefully helps us see beyond Atlantis.",
+            floodTextTitle: "What might have happened before the Great Flood?",
+            floodText: "Before the natural catastrophe, almost all of humanity had shifted from biotechnology (nature, spirit, body, etc.) to a technology that requires destruction to function—at least in cities. With that technology, something was created that affected the whole world. The Vedrus, however, have always continued using biotechnology and understood its significance. In its thoughtlessness, humanity closed itself off and lost connection with both itself and the light. With light no longer able to support humanity, the world was heading toward great destruction. The events preceding the natural catastrophe are symbolically depicted in the following passages from the Book of Enoch:",
+            enochReferences: [
+                "1 Enoch 6:1-6",
+                "1 Enoch 7:1-6",
+                "1 Enoch 52:1-3",
+                "1 Enoch 54:1-3",
+                "1 Enoch 54:4-5",
+                "1 Enoch 60:1-2"
+            ]
+        },
+        ru: {
+            title: "Местоположения окаменевших гигантских пней",
+            emailInfo: "Вы можете отправить дополнительные местоположения окаменевших гигантских пней на мой email: <b>kehomieli@proton.me</b>",
+            mapPurposeTitle: "Цель карты",
+            mapPurposeText: "Цель карты — прояснить представление о мире до Великого Потопа, как это упоминается в различных мифологиях. Карта показывает места, где когда-то стояли гигантские деревья, и, надеемся, поможет нам увидеть за пределы Атлантиды.",
+            floodTextTitle: "Что могло произойти до Великого Потопа?",
+            floodText: "До природной катастрофы почти все человечество перешло от биотехнологий (природа, дух, тело и т. д.) к технологиям, которые требуют разрушения для функционирования — по крайней мере в городах. С помощью этих технологий было создано нечто, что повлияло на весь мир. Однако Ведрусы всегда продолжали использовать биотехнологии и понимали их значимость. В своем бессознательном поведении человечество закрыло себя и потеряло связь как с собой, так и со светом. Так как свет больше не мог поддерживать человечество, мир был на пути к великому разрушению. События, предшествовавшие природной катастрофе, символически изображены в следующих отрывках из Книги Еноха:",
+            enochReferences: [
+                "1 Еноха 6:1-6",
+                "1 Еноха 7:1-6",
+                "1 Еноха 52:1-3",
+                "1 Еноха 54:1-3",
+                "1 Еноха 54:4-5",
+                "1 Еноха 60:1-2"
+            ]
+        }
+    };
+
+    document.querySelector('h1').textContent = translations[language].title;
+    document.querySelector('p').innerHTML = translations[language].emailInfo;
+    document.querySelector('h2').textContent = translations[language].mapPurposeTitle;
+    document.querySelector('p:nth-of-type(2)').textContent = translations[language].mapPurposeText;
+    document.querySelector('h3').textContent = translations[language].floodTextTitle;
+    document.querySelector('p:nth-of-type(3)').textContent = translations[language].floodText;
+    
+    const enochList = document.createElement("ul");
+    translations[language].enochReferences.forEach(function(reference) {
+        const listItem = document.createElement("li");
+        listItem.textContent = reference;
+        enochList.appendChild(listItem);
+    });
+
+    const existingList = document.querySelector("ul");
+    if (existingList) {
+        existingList.replaceWith(enochList);
+    } else {
+        document.body.appendChild(enochList);
+    }
+}
+
     </script>
 </body>
 </html>
